@@ -1,6 +1,5 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TextInput } from 'react-native';
 import React from 'react';
-import { Button, TextInput, Checkbox } from 'react-native-paper';
 import styles from './styles';
 import image1 from '../../../../public/images/image3.jpg';
 
@@ -21,19 +20,17 @@ const Signin: React.FC<Props> = ({ onSigninPressHandle }) => {
         <TextInput
           onChangeText={setEmail}
           value={email}
-          label="Email"
-          mode="outlined"
+          placeholder="Email"
           keyboardType="email-address"
         />
         <TextInput
           onChangeText={setPassword}
           value={password}
-          mode="outlined"
-          label="Password"
+          placeholder="Password"
           secureTextEntry
         />
         <View style={styles.row}>
-          <Checkbox.Item
+          {/* <Checkbox.Item
             label="Remember Me"
             position="leading"
             status={rememberMe ? 'checked' : 'unchecked'}
@@ -42,8 +39,8 @@ const Signin: React.FC<Props> = ({ onSigninPressHandle }) => {
             onPress={() => {
               setRememberMe((prevState) => !prevState);
             }}
-          />
-          <Button
+          /> */}
+          {/* <Button
             mode="text"
             color="black"
             labelStyle={styles.btnLabels}
@@ -51,16 +48,16 @@ const Signin: React.FC<Props> = ({ onSigninPressHandle }) => {
             onPress={() => console.log('Forgot Password?')}
           >
             Forgot Password?
-          </Button>
+          </Button> */}
         </View>
-        <Button
+        {/* <Button
           mode="contained"
           uppercase={false}
           onPress={() => onSigninPressHandle(email, password)}
         >
           Sign In
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           mode="text"
           color="black"
           style={styles.signupButtton}
@@ -69,7 +66,7 @@ const Signin: React.FC<Props> = ({ onSigninPressHandle }) => {
           onPress={() => console.log(`Don't have an account? Sign up`)}
         >
           Don't have an account? Sign up
-        </Button>
+        </Button> */}
       </View>
     </View>
   );

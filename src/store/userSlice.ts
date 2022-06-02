@@ -7,7 +7,6 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import { login } from '../api/lib/users';
-import * as SecureStore from 'expo-secure-store';
 
 interface userState {
   isSignedIn: boolean;
@@ -36,7 +35,6 @@ export const loginThunk = createAsyncThunk<
     const { email, password } = inputs;
     const result = await login(email, password);
     return result.data.user;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     const error: AxiosError<ValidationErrors> = err;
     if (!error.response) {
@@ -54,7 +52,7 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(isFulfilled(loginThunk), (state, { payload }) => {
+      .addMatcher(isFulfilled(loginThunk), (state) => {
         // state.authUser = payload;
         state.isSignedIn = true;
         state.isLoading = false;
