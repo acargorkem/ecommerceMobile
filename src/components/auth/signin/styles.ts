@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import theme from '../../../styles/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,25 +22,56 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 10,
   },
+  inputs: {
+    borderWidth: 1,
+    padding: 4,
+    marginVertical: 4,
+    borderRadius: 8,
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginVertical: 10,
   },
+  rememberMeButton: {
+    flexDirection: 'row',
+    padding: 2,
+    alignItems: 'center',
+  },
   checkbox: {
-    paddingLeft: 0,
+    marginRight: 3,
   },
   btnLabels: {
     fontSize: 12,
     fontWeight: '300',
     margin: 0,
+    color: theme.palette.text.primary,
+  },
+  signinButton: {
+    backgroundColor: theme.palette.primary,
+    padding: 8,
+    borderRadius: 8,
+    alignItems: 'center',
+    color: 'white',
+  },
+  signinText: {
+    fontSize: 16,
+    fontWeight: '400',
+    margin: 0,
+    color: 'white',
   },
   signupButtton: {
-    alignSelf: 'flex-start',
-    marginTop: 10,
+    alignItems: 'center',
+    marginTop: 15,
     marginVertical: 0,
     marginHorizontal: 0,
+    flexDirection: 'row',
+  },
+  signupTextSecondary: {
+    color: theme.palette.text.secondary,
+    marginRight: 5,
+    fontSize: 12,
   },
 });
 
