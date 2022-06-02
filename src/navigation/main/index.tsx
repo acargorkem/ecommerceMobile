@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import Signin from '../../screens/signin';
+import SigninScreen from '../../screens/signin';
 import BottomTabsNavigator from '../bottomtabs';
 
 const Stack = createStackNavigator();
@@ -21,7 +21,7 @@ const Route = () => {
           </>
         ) : (
           <>
-            <Stack.Screen name="Signin" component={Signin} />
+            <Stack.Screen name="Signin" component={SigninScreen} />
           </>
         )}
       </Stack.Navigator>

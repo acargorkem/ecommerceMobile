@@ -4,7 +4,11 @@ import { Button, TextInput, Checkbox } from 'react-native-paper';
 import styles from './styles';
 import image1 from '../../../../public/images/image3.jpg';
 
-const AuthMenu = () => {
+interface Props {
+  onSigninPressHandle: (email: string, password: string) => void;
+}
+
+const Signin: React.FC<Props> = ({ onSigninPressHandle }) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [rememberMe, setRememberMe] = React.useState(false);
@@ -52,7 +56,7 @@ const AuthMenu = () => {
         <Button
           mode="contained"
           uppercase={false}
-          onPress={() => console.log('Sign In')}
+          onPress={() => onSigninPressHandle(email, password)}
         >
           Sign In
         </Button>
@@ -71,4 +75,4 @@ const AuthMenu = () => {
   );
 };
 
-export default AuthMenu;
+export default Signin;
