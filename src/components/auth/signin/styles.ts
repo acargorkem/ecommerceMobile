@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontSize: 12,
   },
+  errorMessages: {
+    color: theme.palette.primary_accent,
+  },
 });
 
 export default styles;

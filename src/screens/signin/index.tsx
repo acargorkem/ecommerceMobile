@@ -7,11 +7,11 @@ import { AppDispatch } from '../../store';
 const SigninScreen = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const onSigninPressHandle = (email: string, password: string) => {
+  const login = (email: string, password: string) => {
     dispatch(loginThunk({ email, password }));
   };
 
-  return <Signin onSigninPressHandle={onSigninPressHandle} />;
+  return <Signin login={login} />;
 };
 
 export default SigninScreen;
