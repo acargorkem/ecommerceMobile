@@ -13,13 +13,15 @@ import image1 from '../../../../public/images/image3.jpg';
 import theme from '../../../styles/theme';
 import { Formik } from 'formik';
 import { signinForm } from './signin.form';
-
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProps } from '../../../types';
 interface Props {
   login: (email: string, password: string) => void;
 }
 
 const Signin: React.FC<Props> = ({ login }) => {
   const [isRemember, setIsRemember] = React.useState(false);
+  const navigation = useNavigation<NavigationProps>();
 
   return (
     <View style={styles.container}>
@@ -78,7 +80,7 @@ const Signin: React.FC<Props> = ({ login }) => {
                 </Pressable>
 
                 <TouchableOpacity
-                  onPress={() => console.log('Forgot Password?')}
+                  onPress={() => navigation.navigate('ForgotPassword')}
                 >
                   <Text style={styles.btnLabels}>Forgot Password?</Text>
                 </TouchableOpacity>
@@ -92,7 +94,7 @@ const Signin: React.FC<Props> = ({ login }) => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.signupButtton}
-                onPress={() => console.log("Don't have an account? Sign up")}
+                onPress={() => navigation.navigate('Signup')}
               >
                 <Text style={styles.signupTextSecondary}>
                   Don't have an account?
