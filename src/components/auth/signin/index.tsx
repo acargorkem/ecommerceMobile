@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import Checkbox from 'expo-checkbox';
 import styles from './styles';
-import image1 from '../../../../public/images/image3.jpg';
+import image1 from '../../../../public/images/signin.jpg';
 import theme from '../../../styles/theme';
 import { Formik } from 'formik';
 import { signinForm } from './signin.form';

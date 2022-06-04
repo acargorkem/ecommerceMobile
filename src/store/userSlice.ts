@@ -6,7 +6,7 @@ import {
   isPending,
 } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import { login } from '../api/lib/users';
+import { login, signup } from '../api/lib/users';
 
 interface userState {
   isSignedIn: boolean;
@@ -44,6 +44,31 @@ export const loginThunk = createAsyncThunk<
   }
 });
 
+// TODO: replace any with user type
+export const signupThunk = createAsyncThunk<
+  any,
+  {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    password: string;
+  },
+  { rejectValue: ValidationErrors }
+>('user/signup', async (inputs, { rejectWithValue }) => {
+  try {
+    const { firstName, lastName, phone, email, password } = inputs;
+    const result = await signup(firstName, lastName, phone, email, password);
+    return result.data.user;
+  } catch (err: any) {
+    const error: AxiosError<ValidationErrors> = err;
+    if (!error.response) {
+      throw err;
+    }
+    return rejectWithValue(error.response.data);
+  }
+});
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -52,16 +77,15 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(isFulfilled(loginThunk), (state) => {
+      .addMatcher(isFulfilled(loginThunk, signupThunk), (state) => {
         // state.authUser = payload;
         state.isSignedIn = true;
         state.isLoading = false;
       })
-      .addMatcher(isPending(loginThunk), (state) => {
+      .addMatcher(isPending(loginThunk, signupThunk), (state) => {
         state.isLoading = true;
       })
-      .addMatcher(isRejected(loginThunk), (state, { payload }) => {
-        console.log(payload);
+      .addMatcher(isRejected(loginThunk, signupThunk), (state) => {
         state.isLoading = false;
         state.hasError = true;
       });

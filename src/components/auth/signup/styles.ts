@@ -10,37 +10,23 @@ const styles = StyleSheet.create({
     flex: 2,
     width: '100%',
     resizeMode: 'cover',
-    marginBottom: 10,
+    marginBottom: 4,
   },
   formContainer: {
-    flex: 3,
+    flex: 5,
     paddingHorizontal: 20,
   },
   header: {
     fontSize: 18,
     fontWeight: '500',
     textAlign: 'center',
-    marginVertical: 10,
+    marginVertical: 4,
   },
   inputs: {
     borderWidth: 1,
     padding: 4,
-    marginVertical: 4,
+    marginVertical: 6,
     borderRadius: 8,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginVertical: 10,
-  },
-  rememberMeButton: {
-    flexDirection: 'row',
-    padding: 2,
-    alignItems: 'center',
-  },
-  checkbox: {
-    marginRight: 3,
   },
   btnLabels: {
     fontSize: 12,
@@ -48,26 +34,27 @@ const styles = StyleSheet.create({
     margin: 0,
     color: theme.palette.text.primary,
   },
-  signinButton: {
+  signupButton: {
     backgroundColor: theme.palette.primary,
+    marginTop: 12,
     padding: 8,
     borderRadius: 8,
     alignItems: 'center',
     color: 'white',
   },
-  signinText: {
+  signupText: {
     fontSize: 16,
     fontWeight: '400',
     margin: 0,
     color: 'white',
   },
-  signupButtton: {
+  signinButton: {
     alignItems: 'center',
-    marginTop: 15,
+    marginVertical: 12,
     marginHorizontal: 0,
     flexDirection: 'row',
   },
-  signupTextSecondary: {
+  signinTextSecondary: {
     color: theme.palette.text.secondary,
     marginRight: 5,
     fontSize: 12,
