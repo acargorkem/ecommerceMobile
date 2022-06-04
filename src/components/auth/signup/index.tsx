@@ -10,10 +10,12 @@ import {
 import React from 'react';
 import styles from './styles';
 import signupImg from '../../../../public/images/signup.jpg';
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { signinForm } from './signup.form';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProps } from '../../../types';
+import YupErrorMessage from '../../common/yupErrorMsg';
+
 interface Props {
   onSignup: (
     firstName: string,
@@ -52,13 +54,7 @@ const Signup: React.FC<Props> = ({ onSignup }) => {
             }
             validationSchema={signinForm}
           >
-            {({
-              handleSubmit,
-              handleChange,
-              errors,
-              setFieldTouched,
-              touched,
-            }) => (
+            {({ handleSubmit, handleChange, setFieldTouched }) => (
               <>
                 <Text style={styles.header}>Sign up</Text>
                 <TextInput
@@ -68,27 +64,21 @@ const Signup: React.FC<Props> = ({ onSignup }) => {
                   placeholder="Email"
                   keyboardType="email-address"
                 />
-                {touched.email && errors.email ? (
-                  <Text style={styles.errorMessages}>{errors.email}</Text>
-                ) : null}
+                <ErrorMessage name="email" component={YupErrorMessage} />
                 <TextInput
                   style={styles.inputs}
                   onChangeText={handleChange('firstName')}
                   onFocus={() => setFieldTouched('firstName')}
                   placeholder="First Name"
                 />
-                {touched.firstName && errors.firstName ? (
-                  <Text style={styles.errorMessages}>{errors.firstName}</Text>
-                ) : null}
+                <ErrorMessage name="firstName" component={YupErrorMessage} />
                 <TextInput
                   style={styles.inputs}
                   onChangeText={handleChange('lastName')}
                   onFocus={() => setFieldTouched('lastName')}
                   placeholder="Last Name"
                 />
-                {touched.lastName && errors.lastName ? (
-                  <Text style={styles.errorMessages}>{errors.lastName}</Text>
-                ) : null}
+                <ErrorMessage name="lastName" component={YupErrorMessage} />
                 <TextInput
                   style={styles.inputs}
                   onChangeText={handleChange('phone')}
@@ -96,9 +86,7 @@ const Signup: React.FC<Props> = ({ onSignup }) => {
                   placeholder="Phone"
                   keyboardType="number-pad"
                 />
-                {touched.phone && errors.phone ? (
-                  <Text style={styles.errorMessages}>{errors.phone}</Text>
-                ) : null}
+                <ErrorMessage name="phone" component={YupErrorMessage} />
                 <TextInput
                   style={styles.inputs}
                   onChangeText={handleChange('password')}
@@ -106,9 +94,7 @@ const Signup: React.FC<Props> = ({ onSignup }) => {
                   placeholder="Password"
                   secureTextEntry
                 />
-                {touched.password && errors.password ? (
-                  <Text style={styles.errorMessages}>{errors.password}</Text>
-                ) : null}
+                <ErrorMessage name="password" component={YupErrorMessage} />
                 <TextInput
                   style={styles.inputs}
                   onChangeText={handleChange('passwordConfirmation')}
@@ -116,11 +102,10 @@ const Signup: React.FC<Props> = ({ onSignup }) => {
                   placeholder="Confirm Password"
                   secureTextEntry
                 />
-                {touched.passwordConfirmation && errors.passwordConfirmation ? (
-                  <Text style={styles.errorMessages}>
-                    {errors.passwordConfirmation}
-                  </Text>
-                ) : null}
+                <ErrorMessage
+                  name="passwordConfirmation"
+                  component={YupErrorMessage}
+                />
                 <TouchableOpacity
                   style={styles.signupButton}
                   activeOpacity={0.65}

@@ -11,10 +11,11 @@ import Checkbox from 'expo-checkbox';
 import styles from './styles';
 import image1 from '../../../../public/images/signin.jpg';
 import theme from '../../../styles/theme';
-import { Formik } from 'formik';
+import { ErrorMessage, Formik } from 'formik';
 import { signinForm } from './signin.form';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProps } from '../../../types';
+import YupErrorMessage from '../../common/yupErrorMsg';
 interface Props {
   login: (email: string, password: string) => void;
 }
@@ -32,13 +33,7 @@ const Signin: React.FC<Props> = ({ login }) => {
           onSubmit={(values) => login(values.email, values.password)}
           validationSchema={signinForm}
         >
-          {({
-            handleSubmit,
-            handleChange,
-            errors,
-            setFieldTouched,
-            touched,
-          }) => (
+          {({ handleSubmit, handleChange, setFieldTouched }) => (
             <>
               <Text style={styles.header}>Sign in</Text>
               <TextInput
@@ -48,9 +43,7 @@ const Signin: React.FC<Props> = ({ login }) => {
                 placeholder="Email"
                 keyboardType="email-address"
               />
-              {touched.email && errors.email ? (
-                <Text style={styles.errorMessages}>{errors.email}</Text>
-              ) : null}
+              <ErrorMessage name="email" component={YupErrorMessage} />
               <TextInput
                 style={styles.inputs}
                 onChangeText={handleChange('password')}
@@ -58,9 +51,7 @@ const Signin: React.FC<Props> = ({ login }) => {
                 placeholder="Password"
                 secureTextEntry
               />
-              {touched.password && errors.password ? (
-                <Text style={styles.errorMessages}>{errors.password}</Text>
-              ) : null}
+              <ErrorMessage name="password" component={YupErrorMessage} />
               <View style={styles.row}>
                 <Pressable
                   style={styles.rememberMeButton}
