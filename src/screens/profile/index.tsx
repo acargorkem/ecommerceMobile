@@ -1,12 +1,16 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import Profile from '../../components/profile';
+import { logout } from '../../store/userSlice';
 
 const ProfileScreen = () => {
-  return (
-    <View>
-      <Text>ProfileScreen</Text>
-    </View>
-  );
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(logout());
+  };
+
+  return <Profile onLogout={onLogout} />;
 };
 
 export default ProfileScreen;

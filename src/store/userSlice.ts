@@ -73,7 +73,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    clear: () => initialState,
+    logout: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -93,5 +93,5 @@ export const userSlice = createSlice({
 });
 
 const { actions, reducer } = userSlice;
-export const { clear } = actions;
+export const { logout } = actions;
 export default reducer;

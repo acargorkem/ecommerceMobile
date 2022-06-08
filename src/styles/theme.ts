@@ -7,5 +7,9 @@ export default {
       secondary: 'rgba(0, 0, 0, 0.45)',
       disabled: 'rgba(0, 0, 0, 0.2)',
     },
+    common: {
+      white: '#fff',
+      black: '#000',
+    },
   },
 };
